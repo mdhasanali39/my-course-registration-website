@@ -1,13 +1,30 @@
-import PropTypes from 'prop-types';
+import Card from "../card/card";
+import Cart from "../cart/Cart";
+import "../home/Home.css";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function Home() {
-    return (
-        <div>
-            <h2>Home</h2>
-        </div>
-    );
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/public/course_data.json");
+        const data = await res.json();
+        setCourses(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  return (
+    <div className="flex gap-6 flex-col md:flex-row">
+      <Card courses={courses}></Card>
+      <Cart></Cart>
+    </div>
+  );
 }
-Home.propTypes = {
-    
-};
 export default Home;
