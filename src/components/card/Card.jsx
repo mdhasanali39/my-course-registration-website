@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 
-function Card({ courses }) {
-    console.log(courses);
+function Card({ courses, handleSelectButtonClicked}) {
+    // console.log(courses);
   return (
     <div className="w-3/4 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {
-        courses.map((course, i) => <div key={i} className="card bg-base-100 pt-4 rounded-lg">
+        courses.map((course) => <div key={course.id} className="card bg-base-100 pt-4 rounded-xl">
           <figure>
             <img
               src={course.image}
@@ -14,7 +14,7 @@ function Card({ courses }) {
           </figure>
           <div className="card-body p-5">
             <h2 className="card-title title-clr text-lg font-semibold">{course.courseName}</h2>
-            <p className="description-clr text-sm font-semibold">{course.details}</p>
+            <p className="description-clr text-[15px] font-semibold">{course.details}</p>
             <div className="flex justify-between">
                 <p className=" flex gap-3">
                 <img
@@ -29,7 +29,9 @@ function Card({ courses }) {
                 </p>
             </div>
             <div className="card-actions justify-center mt-6">
-              <button className="btn btn-primary w-full bg-[#2F80ED] text-white border-none font-semibold">Select</button>
+              <button
+                onClick={()=>{handleSelectButtonClicked(course)}}
+               className="btn btn-primary w-full bg-[#2F80ED] text-white border-none font-semibold">Select</button>
             </div>
           </div>
         </div>)
@@ -39,5 +41,6 @@ function Card({ courses }) {
 }
 Card.propTypes = {
   courses: PropTypes.array.isRequired,
+  handleSelectButtonClicked: PropTypes.func.isRequired,
 };
 export default Card;
