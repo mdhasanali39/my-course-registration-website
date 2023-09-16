@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import dollarSign from '/src/assets/icons/dollar-sign.png';
+import creditSign from '/src/assets/icons/credit.png';
 
 function Card({ courses, handleSelectButtonClicked}) {
     // console.log(courses);
@@ -19,12 +21,12 @@ function Card({ courses, handleSelectButtonClicked}) {
             <div className="flex justify-between">
                 <p className=" flex gap-3">
                 <img
-                 src="/src/assets/icons/dollar-sign.png"
+                 src={dollarSign}
                 /> 
                 Price: {course.price}
                 </p>
                 <p className="text-right flex gap-3">
-                <img src="/src/assets/icons/credit.png"
+                <img src={creditSign}
                 /> 
                 Credit: {course.credit}hr
                 </p>
