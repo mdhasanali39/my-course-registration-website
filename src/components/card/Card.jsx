@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 function Card({ courses, handleSelectButtonClicked}) {
     // console.log(courses);
   return (
-    <div className="w-3/4 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div className="w-full lg:w-3/4 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {
         courses.map((course) => <div key={course.id} className="card bg-base-100 pt-4 rounded-xl">
           <figure>
             <img
+              className="px-5"
               src={course.image}
               alt={course.courseName}
             />
